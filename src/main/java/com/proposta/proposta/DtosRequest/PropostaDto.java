@@ -1,7 +1,6 @@
-package com.proposta.solicitante.DtosRequest;
+package com.proposta.proposta.DtosRequest;
 
-import com.proposta.config.validacoes.CpfOuCnpj;
-import com.proposta.solicitante.Solicitante;
+import com.proposta.proposta.Proposta;
 import com.sun.istack.NotNull;
 
 import javax.validation.constraints.Email;
@@ -9,9 +8,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
-public class SolicitanteDto {
+public class PropostaDto {
 
-    @NotNull @CpfOuCnpj
+    @NotNull @NotEmpty
     private String documento;
     @Email @NotEmpty @NotNull
     private String email;
@@ -22,7 +21,7 @@ public class SolicitanteDto {
     @NotNull @Positive
     private BigDecimal salario;
 
-    public SolicitanteDto(String email, String nome, String endereco, BigDecimal salario) {
+    public PropostaDto(String email, String nome, String endereco, BigDecimal salario) {
         this.email = email;
         this.nome = nome;
         this.endereco = endereco;
@@ -49,7 +48,7 @@ public class SolicitanteDto {
         return salario;
     }
 
-    public Solicitante toModel() {
-        return new Solicitante(this.documento, this.email, this.nome, this.endereco, this.salario);
+    public Proposta toModel() {
+        return new Proposta(this.documento, this.email, this.nome, this.endereco, this.salario);
     }
 }

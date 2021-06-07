@@ -1,4 +1,4 @@
-package com.proposta.solicitante;
+package com.proposta.proposta;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Entity
-public class Solicitante {
+public class Proposta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +19,9 @@ public class Solicitante {
     private BigDecimal salario;
 
 
-    public  Solicitante(){}
+    public Proposta(){}
 
-    public Solicitante(String documento, String email, String nome, String endereco, BigDecimal salario) {
+    public Proposta(String documento, String email, String nome, String endereco, BigDecimal salario) {
 
         this.documento = documento;
         this.email = email;
