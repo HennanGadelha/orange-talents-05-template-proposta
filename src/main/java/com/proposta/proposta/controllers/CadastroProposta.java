@@ -53,7 +53,6 @@ public class CadastroProposta {
 
     }
 
-
     public void analiseSePropostaValida(Proposta proposta) throws JsonProcessingException {
         try {
             analisaProposta.analisarPropostaValida( new AnalisePropostaRequest(proposta));

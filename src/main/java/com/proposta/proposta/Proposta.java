@@ -42,6 +42,10 @@ public class Proposta {
         return nome;
     }
 
+    public StatusEnum getStatus() {
+        return status;
+    }
+
     public void resultadoStatusProposta(StatusEnum status){
         this.status = status;
     }
