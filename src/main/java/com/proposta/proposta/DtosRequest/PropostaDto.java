@@ -1,5 +1,6 @@
 package com.proposta.proposta.DtosRequest;
 
+import com.proposta.config.validacoes.CpfOuCnpj;
 import com.proposta.proposta.Proposta;
 import com.sun.istack.NotNull;
 
@@ -10,7 +11,7 @@ import java.math.BigDecimal;
 
 public class PropostaDto {
 
-    @NotNull @NotEmpty
+    @NotNull @NotEmpty @CpfOuCnpj
     private String documento;
     @Email @NotEmpty @NotNull
     private String email;

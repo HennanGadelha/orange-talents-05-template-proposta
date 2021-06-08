@@ -1,9 +1,6 @@
 package com.proposta.proposta;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -17,6 +14,9 @@ public class Proposta {
     private String nome;
     private String endereco;
     private BigDecimal salario;
+
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
 
 
     public Proposta(){}
@@ -32,5 +32,17 @@ public class Proposta {
 
     public Long getId() {
         return id;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void resultadoStatusProposta(StatusEnum status){
+        this.status = status;
     }
 }
