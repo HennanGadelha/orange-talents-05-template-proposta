@@ -1,4 +1,4 @@
-package com.proposta.apiexternaanaliseproposta;
+package com.proposta.servicosexternos.analisepropostas;
 
 public class AnalisePropostaResponse {
 

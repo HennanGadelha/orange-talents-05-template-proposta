@@ -1,5 +1,7 @@
 package com.proposta.proposta;
 
+import com.proposta.cartao.Cartao;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -14,6 +16,10 @@ public class Proposta {
     private String nome;
     private String endereco;
     private BigDecimal salario;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "numero_do_cartao")
+    private Cartao cartao;
 
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
@@ -42,11 +48,30 @@ public class Proposta {
         return nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
     public StatusEnum getStatus() {
         return status;
     }
 
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void adicionaCartao(Cartao cartao) {this.cartao = cartao;}
+
     public void resultadoStatusProposta(StatusEnum status){
         this.status = status;
     }
+
 }

@@ -2,17 +2,15 @@ package com.proposta.proposta.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.proposta.apiexternaanaliseproposta.AnaliseProposta;
-import com.proposta.apiexternaanaliseproposta.AnalisePropostaRequest;
-import com.proposta.apiexternaanaliseproposta.AnalisePropostaResponse;
+import com.proposta.servicosexternos.analisepropostas.AnaliseProposta;
+import com.proposta.servicosexternos.analisepropostas.AnalisePropostaRequest;
+import com.proposta.servicosexternos.analisepropostas.AnalisePropostaResponse;
 import com.proposta.config.validacoes.ExistingProposalException;
 import com.proposta.proposta.DtosRequest.PropostaDto;
 import com.proposta.proposta.Proposta;
 import com.proposta.proposta.PropostaRepository;
 import com.proposta.proposta.StatusEnum;
-import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +29,7 @@ import java.util.Optional;
 public class CadastroProposta {
 
     @Autowired
-    PropostaRepository propostaRepositoryRepository;
+    PropostaRepository propostaRepository;
 
     @Autowired
     AnaliseProposta analisaProposta;
@@ -43,7 +41,7 @@ public class CadastroProposta {
         verificaPropostaJaCadastrada(propostaRequest.getDocumento());
 
         Proposta proposta = propostaRequest.toModel();
-        propostaRepositoryRepository.save(proposta);
+        propostaRepository.save(proposta);
 
         analiseSePropostaValida(proposta);
 
@@ -71,7 +69,7 @@ public class CadastroProposta {
 
     public void verificaPropostaJaCadastrada(String documento) throws ExistingProposalException {
 
-        Optional<Proposta> propostaCadastrada = propostaRepositoryRepository.findByDocumento(documento);
+        Optional<Proposta> propostaCadastrada = propostaRepository.findByDocumento(documento);
         if(propostaCadastrada.isPresent()) throw new ExistingProposalException("Já existe uma proposta para esse documento");
 
     }
