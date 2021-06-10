@@ -11,6 +11,7 @@ import com.proposta.proposta.Proposta;
 import com.proposta.proposta.PropostaRepository;
 import com.proposta.proposta.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,7 +71,7 @@ public class CadastroProposta {
     public void verificaPropostaJaCadastrada(String documento) throws ExistingProposalException {
 
         Optional<Proposta> propostaCadastrada = propostaRepository.findByDocumento(documento);
-        if(propostaCadastrada.isPresent()) throw new ExistingProposalException("Já existe uma proposta para esse documento");
+        if(propostaCadastrada.isPresent()) throw new ExistingProposalException(HttpStatus.UNPROCESSABLE_ENTITY,"Já existe uma proposta para esse documento");
 
     }
 

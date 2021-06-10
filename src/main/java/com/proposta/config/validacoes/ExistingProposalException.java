@@ -9,7 +9,7 @@ public class ExistingProposalException extends Throwable {
     private String message;
 
 
-    public ExistingProposalException(String message) {
+    public ExistingProposalException(HttpStatus  status, String message) {
         super(message);
         this.status = HttpStatus.UNPROCESSABLE_ENTITY;
         this.message = message;

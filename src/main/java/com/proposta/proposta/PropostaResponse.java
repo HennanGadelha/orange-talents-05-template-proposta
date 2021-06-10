@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 public class PropostaResponse {
 
+    private Long idProposta;
     private String documento;
     private String nome;
     private String email;
@@ -16,6 +17,7 @@ public class PropostaResponse {
     private CartaoResponse cartao;
 
     public PropostaResponse(Proposta proposta) {
+        this.idProposta = proposta.getId();
         this.documento = proposta.getDocumento();
         this.nome = proposta.getNome();
         this.email = proposta.getEmail();
@@ -29,6 +31,10 @@ public class PropostaResponse {
 
     public void setCartao(CartaoResponse cartao) {
         this.cartao = cartao;
+    }
+
+    public Long getId() {
+        return idProposta;
     }
 
     public String getDocumento() {
@@ -55,7 +61,5 @@ public class PropostaResponse {
         return status;
     }
 
-    public CartaoResponse getCartao() {
-        return cartao;
-    }
+
 }

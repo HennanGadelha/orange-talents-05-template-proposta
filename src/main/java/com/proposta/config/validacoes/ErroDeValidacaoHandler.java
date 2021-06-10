@@ -39,7 +39,7 @@ public class ErroDeValidacaoHandler {
     @ExceptionHandler(ExistingProposalException.class)
     public ResponseEntity<?> existingProposalHandler(ExistingProposalException ex){
 
-        return ResponseEntity.status(ex.getStatus()).body("Proposta já cadastrada");
+        return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
     }
 
 }

@@ -1,9 +1,11 @@
 package com.proposta.proposta.controllers;
 
+import com.proposta.config.validacoes.ExistingProposalException;
 import com.proposta.proposta.Proposta;
 import com.proposta.proposta.PropostaRepository;
 import com.proposta.proposta.PropostaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +22,11 @@ public class BuscarPropostaPorId {
     private PropostaRepository propostaRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<PropostaResponse> buscarPorId(@PathVariable("id") Long id){
+    public ResponseEntity<PropostaResponse> buscarPorId(@PathVariable("id") Long id) throws ExistingProposalException {
 
         Optional<Proposta> possivelProposta = propostaRepository.findById(id);
+
+        if(!possivelProposta.isPresent()) throw  new ExistingProposalException(HttpStatus.NOT_FOUND, "proposta não encontrada");
 
         PropostaResponse propostaResponse = new PropostaResponse(possivelProposta.get());
         return ResponseEntity.ok(propostaResponse);
