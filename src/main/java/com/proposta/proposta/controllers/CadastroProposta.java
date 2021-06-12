@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proposta.servicosexternos.analisepropostas.AnaliseProposta;
 import com.proposta.servicosexternos.analisepropostas.AnalisePropostaRequest;
 import com.proposta.servicosexternos.analisepropostas.AnalisePropostaResponse;
-import com.proposta.config.validacoes.ExistingProposalException;
+import com.proposta.config.validacoes.ExistingEntityException;
 import com.proposta.proposta.DtosRequest.PropostaDto;
 import com.proposta.proposta.Proposta;
 import com.proposta.proposta.PropostaRepository;
@@ -37,7 +37,7 @@ public class CadastroProposta {
 
     @PostMapping("/cadastro")
     @Transactional
-    public ResponseEntity<?> cadastro(@RequestBody @Valid PropostaDto propostaRequest, UriComponentsBuilder uriBuilder) throws ExistingProposalException, JsonProcessingException /*throws ExistingProposalException*/ {
+    public ResponseEntity<?> cadastro(@RequestBody @Valid PropostaDto propostaRequest, UriComponentsBuilder uriBuilder) throws ExistingEntityException, JsonProcessingException /*throws ExistingProposalException*/ {
 
         verificaPropostaJaCadastrada(propostaRequest.getDocumento());
 
@@ -68,10 +68,10 @@ public class CadastroProposta {
     }
 
 
-    public void verificaPropostaJaCadastrada(String documento) throws ExistingProposalException {
+    public void verificaPropostaJaCadastrada(String documento) throws ExistingEntityException {
 
         Optional<Proposta> propostaCadastrada = propostaRepository.findByDocumento(documento);
-        if(propostaCadastrada.isPresent()) throw new ExistingProposalException(HttpStatus.UNPROCESSABLE_ENTITY,"Já existe uma proposta para esse documento");
+        if(propostaCadastrada.isPresent()) throw new ExistingEntityException(HttpStatus.UNPROCESSABLE_ENTITY,"Já existe uma proposta para esse documento");
 
     }
 

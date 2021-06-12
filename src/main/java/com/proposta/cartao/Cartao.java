@@ -1,8 +1,13 @@
 package com.proposta.cartao;
 
+import com.proposta.cartao.biometria.Biometria;
+import com.proposta.cartao.vencimento.Vencimento;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Cartao {
@@ -15,10 +20,10 @@ public class Cartao {
     private  BigDecimal valorLimite;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    private  Vencimento vencimento;
+    private Vencimento vencimento;
 
-
-
+    @OneToMany(mappedBy = "cartao")
+    private List<Biometria> biometrias = new ArrayList<>();
 
     @Deprecated
     public Cartao(){}

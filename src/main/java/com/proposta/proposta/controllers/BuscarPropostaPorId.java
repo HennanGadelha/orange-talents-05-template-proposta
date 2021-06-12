@@ -1,6 +1,6 @@
 package com.proposta.proposta.controllers;
 
-import com.proposta.config.validacoes.ExistingProposalException;
+import com.proposta.config.validacoes.ExistingEntityException;
 import com.proposta.proposta.Proposta;
 import com.proposta.proposta.PropostaRepository;
 import com.proposta.proposta.PropostaResponse;
@@ -22,11 +22,11 @@ public class BuscarPropostaPorId {
     private PropostaRepository propostaRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<PropostaResponse> buscarPorId(@PathVariable("id") Long id) throws ExistingProposalException {
+    public ResponseEntity<PropostaResponse> buscarPorId(@PathVariable("id") Long id) throws ExistingEntityException {
 
         Optional<Proposta> possivelProposta = propostaRepository.findById(id);
 
-        if(!possivelProposta.isPresent()) throw  new ExistingProposalException(HttpStatus.NOT_FOUND, "proposta não encontrada");
+        if(!possivelProposta.isPresent()) throw  new ExistingEntityException(HttpStatus.NOT_FOUND, "proposta não encontrada");
 
         PropostaResponse propostaResponse = new PropostaResponse(possivelProposta.get());
         return ResponseEntity.ok(propostaResponse);

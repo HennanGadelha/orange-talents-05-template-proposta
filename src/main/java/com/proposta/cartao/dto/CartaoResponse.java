@@ -1,4 +1,7 @@
-package com.proposta.cartao;
+package com.proposta.cartao.dto;
+
+import com.proposta.cartao.Cartao;
+import com.proposta.cartao.vencimento.Vencimento;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

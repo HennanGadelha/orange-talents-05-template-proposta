@@ -1,6 +1,6 @@
 package com.proposta.proposta;
 
-import com.proposta.cartao.CartaoResponse;
+import com.proposta.cartao.dto.CartaoResponse;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,6 @@
 package com.proposta.proposta.DtosRequest;
 
-import com.proposta.config.validacoes.CpfOuCnpj;
+import com.proposta.config.validacoes.cpfoucnpj.CpfOuCnpj;
 import com.proposta.proposta.Proposta;
 import com.sun.istack.NotNull;
 

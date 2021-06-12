@@ -1,4 +1,4 @@
-package com.proposta.config.validacoes;
+package com.proposta.config.validacoes.cpfoucnpj;
 
 import org.hibernate.validator.constraints.CompositionType;
 import org.hibernate.validator.constraints.ConstraintComposition;

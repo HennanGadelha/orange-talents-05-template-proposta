@@ -1,4 +1,6 @@
-package com.proposta.cartao;
+package com.proposta.cartao.vencimento.dto;
+
+import com.proposta.cartao.vencimento.Vencimento;
 
 import java.time.LocalDateTime;
 

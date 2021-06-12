@@ -36,8 +36,8 @@ public class ErroDeValidacaoHandler {
         return errosDeFormularioDtos;
     }
 
-    @ExceptionHandler(ExistingProposalException.class)
-    public ResponseEntity<?> existingProposalHandler(ExistingProposalException ex){
+    @ExceptionHandler(ExistingEntityException.class)
+    public ResponseEntity<?> existingProposalHandler(ExistingEntityException ex){
 
         return ResponseEntity.status(ex.getStatus()).body(ex.getMessage());
     }

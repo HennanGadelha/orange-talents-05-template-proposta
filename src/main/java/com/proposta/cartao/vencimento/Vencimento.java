@@ -1,4 +1,4 @@
-package com.proposta.cartao;
+package com.proposta.cartao.vencimento;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

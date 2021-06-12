@@ -1,8 +1,7 @@
 package com.proposta.servicosexternos.associacaocartao;
 
 import com.proposta.cartao.Cartao;
-import com.proposta.cartao.Vencimento;
-import com.proposta.cartao.VencimentoResponse;
+import com.proposta.cartao.vencimento.dto.VencimentoResponse;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
