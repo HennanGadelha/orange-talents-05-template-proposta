@@ -20,7 +20,7 @@ public class BuscaAgendadaCartao {
     private PropostaRepository propostaRepository;
 
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 120000)
     public void associaCartao(){
 
         List<Proposta> propostasAprovadas = propostaRepository.findByPropostasElegiveis();

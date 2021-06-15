@@ -1,6 +1,7 @@
 package com.proposta.cartao;
 
 import com.proposta.cartao.biometria.Biometria;
+import com.proposta.cartao.bloqueio.BloqueioCartao;
 import com.proposta.cartao.vencimento.Vencimento;
 
 import javax.persistence.*;
@@ -19,11 +20,18 @@ public class Cartao {
     private  String titular;
     private  BigDecimal valorLimite;
 
+    @Enumerated(EnumType.STRING)
+    private Situacao situacao;
+
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private Vencimento vencimento;
 
     @OneToMany(mappedBy = "cartao")
     private List<Biometria> biometrias = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL)
+    private List<BloqueioCartao> bloqueios = new ArrayList<>();
 
     @Deprecated
     public Cartao(){}
@@ -34,6 +42,7 @@ public class Cartao {
         this.titular = titular;
         this.valorLimite = valorLimite;
         this.vencimento = vencimento;
+        this.situacao = Situacao.NAO_BLOQUEADO;
 
     }
 
@@ -56,4 +65,21 @@ public class Cartao {
     public Vencimento getVencimento() {
         return vencimento;
     }
+
+    public void bloqueia(String ipAdress, String userAgent){
+
+        this.situacao = Situacao.BLOQUEADO;
+
+        adicionaBloqueio(new BloqueioCartao(ipAdress, userAgent, this));
+    }
+
+    private void adicionaBloqueio(BloqueioCartao bloqueioCartao) {
+
+        bloqueios.add(bloqueioCartao);
+    }
+
+    public boolean ExisteBloqueioAtivo(){
+        return this.situacao.equals(Situacao.BLOQUEADO);
+    }
+
 }
