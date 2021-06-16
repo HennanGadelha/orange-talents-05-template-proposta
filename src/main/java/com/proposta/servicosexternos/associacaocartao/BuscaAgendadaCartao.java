@@ -14,7 +14,7 @@ import java.util.List;
 public class BuscaAgendadaCartao {
 
     @Autowired
-    private AssociaCartao associaCartao;
+    private ApiCartao apiCartao;
 
     @Autowired
     private PropostaRepository propostaRepository;
@@ -28,7 +28,7 @@ public class BuscaAgendadaCartao {
         try{
 
             for (Proposta proposta : propostasAprovadas){
-                AssociaCartaoResponse cartaoResponse = associaCartao.consultarCartaoDisponivel(proposta.getId().toString());
+                AssociaCartaoResponse cartaoResponse = apiCartao.consultarCartaoDisponivel(proposta.getId().toString());
                 Cartao cartao = cartaoResponse.toModel();
                 proposta.adicionaCartao(cartao);
                 propostaRepository.save(proposta);
