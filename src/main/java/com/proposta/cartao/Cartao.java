@@ -1,5 +1,6 @@
 package com.proposta.cartao;
 
+import com.proposta.cartao.avisoviagem.AvisoViagem;
 import com.proposta.cartao.biometria.Biometria;
 import com.proposta.cartao.bloqueio.BloqueioCartao;
 import com.proposta.cartao.vencimento.Vencimento;
@@ -32,6 +33,9 @@ public class Cartao {
 
     @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL)
     private List<BloqueioCartao> bloqueios = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cartao", cascade = CascadeType.MERGE)
+    private List<AvisoViagem> avisosDeViagens = new ArrayList<>();
 
     @Deprecated
     public Cartao(){}
@@ -82,4 +86,11 @@ public class Cartao {
         return this.situacao.equals(Situacao.BLOQUEADO);
     }
 
+    public void comunicaViagem(AvisoViagem avisoViagem){
+        avisosDeViagens.add(avisoViagem);
+    }
+
+    public List<AvisoViagem> getAvisosDeViagens() {
+        return avisosDeViagens;
+    }
 }
