@@ -1,5 +1,5 @@
 package com.proposta.cartao.carteira;
 
 public enum TipoCarteira {
-    PAYPAL
+    PAYPAL,SANSUNG_PAY
 }
