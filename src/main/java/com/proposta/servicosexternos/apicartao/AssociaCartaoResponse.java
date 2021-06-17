@@ -1,4 +1,4 @@
-package com.proposta.servicosexternos.associacaocartao;
+package com.proposta.servicosexternos.apicartao;
 
 import com.proposta.cartao.Cartao;
 import com.proposta.cartao.vencimento.dto.VencimentoResponse;

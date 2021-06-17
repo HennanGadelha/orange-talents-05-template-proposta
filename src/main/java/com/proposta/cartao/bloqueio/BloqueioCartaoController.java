@@ -3,7 +3,7 @@ package com.proposta.cartao.bloqueio;
 import com.proposta.cartao.Cartao;
 import com.proposta.cartao.CartaoRepository;
 import com.proposta.config.validacoes.ExistingEntityException;
-import com.proposta.servicosexternos.associacaocartao.ApiCartao;
+import com.proposta.servicosexternos.apicartao.ApiCartao;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

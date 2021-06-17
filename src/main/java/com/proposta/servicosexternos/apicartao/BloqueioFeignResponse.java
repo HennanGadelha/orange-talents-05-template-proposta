@@ -1,18 +1,16 @@
-package com.proposta.servicosexternos.associacaocartao.avisoviagem;
+package com.proposta.servicosexternos.apicartao;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
-
-public class AvisoViagemFeignResponse {
-
+public class BloqueioFeignResponse {
 
     @JsonProperty
     private String resultado;
 
     @JsonCreator(mode = Mode.PROPERTIES)
-    public AvisoViagemFeignResponse(String resultado) {
+    public BloqueioFeignResponse(String resultado) {
         this.resultado = resultado;
     }
 

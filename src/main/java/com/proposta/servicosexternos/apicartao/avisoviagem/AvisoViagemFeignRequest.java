@@ -1,4 +1,4 @@
-package com.proposta.servicosexternos.associacaocartao.avisoviagem;
+package com.proposta.servicosexternos.apicartao.avisoviagem;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

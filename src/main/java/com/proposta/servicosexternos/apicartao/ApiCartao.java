@@ -1,8 +1,10 @@
-package com.proposta.servicosexternos.associacaocartao;
+package com.proposta.servicosexternos.apicartao;
 
 import com.proposta.cartao.bloqueio.BloqueioFeignRequest;
-import com.proposta.servicosexternos.associacaocartao.avisoviagem.AvisoViagemFeignRequest;
-import com.proposta.servicosexternos.associacaocartao.avisoviagem.AvisoViagemFeignResponse;
+import com.proposta.servicosexternos.apicartao.avisoviagem.AvisoViagemFeignRequest;
+import com.proposta.servicosexternos.apicartao.avisoviagem.AvisoViagemFeignResponse;
+import com.proposta.servicosexternos.apicartao.carteira.CarteiraFeignRequest;
+import com.proposta.servicosexternos.apicartao.carteira.CarteiraFeignResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +21,8 @@ public interface ApiCartao {
 
     @RequestMapping(method =  RequestMethod.POST, path = "${api.busca.cartao}/{id}/avisos")
     AvisoViagemFeignResponse avisoViagem(@PathVariable("id") String id, AvisoViagemFeignRequest avisoViagemRequest);
+
+    @RequestMapping(method = RequestMethod.POST, path = "${api.busca.cartao}/{id}/carteiras")
+    CarteiraFeignResponse associaCarteira(@PathVariable("id") String id, CarteiraFeignRequest carteiraFeignRequest);
 
 }
