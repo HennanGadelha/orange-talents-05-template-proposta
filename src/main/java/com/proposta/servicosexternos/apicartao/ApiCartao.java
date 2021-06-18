@@ -6,6 +6,7 @@ import com.proposta.servicosexternos.apicartao.avisoviagem.AvisoViagemFeignRespo
 import com.proposta.servicosexternos.apicartao.carteira.CarteiraFeignRequest;
 import com.proposta.servicosexternos.apicartao.carteira.CarteiraFeignResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
