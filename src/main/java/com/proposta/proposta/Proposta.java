@@ -29,7 +29,7 @@ public class Proposta {
 
     public Proposta(String documento, String email, String nome, String endereco, BigDecimal salario) {
 
-        this.documento = documento;
+        this.documento = CripografarDocumento.criptografar(documento);
         this.email = email;
         this.nome = nome;
         this.endereco = endereco;
